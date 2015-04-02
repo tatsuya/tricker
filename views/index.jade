@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div
+    h1= title
+
+    div(ng-view)
+
+  script(src='js/lib/angular/angular.min.js')
+  script(src='js/lib/angular/angular-route.min.js')
+  script(src='js/app.js')
+  script(src='js/controllers.js')
