@@ -11,4 +11,9 @@ angular.module('trickerApp.controllers', []).
     function($scope) {
       $scope.world = 'world';
     }
-  ]);
+  ]).
+  controller('TrickListCtrl', ['$scope',
+    function($scope) {
+      $scope.world = 'world';
+    }
+  ])

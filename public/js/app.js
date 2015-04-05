@@ -12,6 +12,10 @@ config(function($routeProvider, $locationProvider) {
       templateUrl: 'partials/index',
       controller: 'IndexCtrl'
     }).
+    when('/tricks', {
+      templateUrl: 'partials/tricks',
+      controller: 'TrickListCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     });
