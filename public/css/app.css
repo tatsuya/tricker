@@ -4,14 +4,6 @@ body {
   padding-bottom: 20px;
 }
 
-.navbar-brand {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  text-align: center;
-  margin: auto;
-}
-
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
