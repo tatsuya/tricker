@@ -3,7 +3,13 @@
 'use strict';
 
 angular.module('trickerApp', [
+  // Angular provided modules
   'ngRoute',
+
+  // Third party modules
+  'youtube-embed',
+
+  // My modules
   'trickerApp.controllers'
 ]).
 config(function($routeProvider, $locationProvider) {

@@ -3,29 +3,8 @@
     .col-md-12
       h2 シフティ
   hr
-  .row
-    .col-md-4
+  .row(ng-repeat="row in rows")
+    .col-md-4(ng-repeat="video in row")
       .video-container
-        iframe(src="https://www.youtube.com/embed/3ADpEvn0mT4" frameborder="0" width="560" height="315" allowfullscreen)
-      h4 キッカーを使ってFsシフティ IKENOCITY PARK ACADEMY　スノーボードHow to
-      p
-        a.btn.btn-sm.btn-danger(href="https://youtu.be/3ADpEvn0mT4" role="button") View on YouTube &raquo;
-    .col-md-4
-      .video-container
-        iframe(src="https://www.youtube.com/embed/JfCWJOt0CzM" frameborder="0" width="560" height="315" allowfullscreen)
-      h4 【キッカー・シフティ】グラブするより難しい、グラブするよりかっこいい！　初心者が参考にするスノーボード動画レッスン講座
-      p
-        a.btn.btn-sm.btn-danger(href="https://youtu.be/JfCWJOt0CzM" role="button") View on YouTube &raquo;
-    .col-md-4
-      .video-container
-        iframe(src="https://www.youtube.com/embed/KQ-XQdGMrHc" frameborder="0" width="560" height="315" allowfullscreen)
-      h4 キッカーを使ってBsシフティ IKENOCITY PARK ACADEMY　スノーボードHow to
-      p
-        a.btn.btn-sm.btn-danger(href="https://youtu.be/KQ-XQdGMrHc" role="button") View on YouTube &raquo;
-  .row
-    .col-md-4
-      .video-container
-        iframe(src="https://www.youtube.com/embed/RVoP-UFewdQ" frameborder="0" width="560" height="315" allowfullscreen)
-      h4 How to Shifty Backside - Snowboarding Tricks
-      p
-        a.btn.btn-sm.btn-danger(href="https://youtu.be/RVoP-UFewdQ" role="button") View on YouTube &raquo;
+        youtube-video(video-id="video.video_id")
+      h4 {{video.title}}
