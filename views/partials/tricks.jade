@@ -6,5 +6,6 @@
   .row(ng-repeat="row in rows")
     .col-md-4(ng-repeat="video in row")
       .video-container
-        youtube-video(video-id="video.video_id")
+        youtube-video(ng-if="video.player == 'youtube'" video-id="video.video_id")
+        vimeo-video(ng-if="video.player == 'vimeo'" video-id="video.video_id" player-id="video.video_id")
       h4 {{video.title}}

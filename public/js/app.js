@@ -8,6 +8,7 @@ angular.module('trickerApp', [
 
   // Third party modules
   'youtube-embed',
+  'vimeoEmbed',
 
   // My modules
   'trickerApp.controllers'
