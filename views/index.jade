@@ -9,16 +9,14 @@ block content
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href="#") Tricker
+        a.navbar-brand(href="/") Tricker
 
       #navbar.navbar-collapse(ng-class="{collapse: isCollapsed}")
         ul.nav.navbar-nav
           li.active
-            a(href="#") ホーム
+            a(href="/") ホーム
           li
             a(href="/tricks") トリック一覧
-          li
-            a(href="contact") Contact
           li.dropdown(ng-class="{open: dropdownOne}", ng-init="dropdownOne", ng-click="dropdownOne = !dropdownOne")
             a.dropdown-toggle(href="#" dropdown-toggle) Dropdown
               span.caret
