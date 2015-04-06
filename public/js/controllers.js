@@ -7,6 +7,13 @@
 // Minification Safe Dependency Injection in AngularJS - http://tutorials.jenkov.com/angularjs/dependency-injection.html#minification-safe-dependency-injection
 
 angular.module('trickerApp.controllers', []).
+  controller('HeaderCtrl', ['$scope',
+    function($scope) {
+      $scope.collapse = function() {
+        $scope.isCollapsed = true;
+      };
+    }
+  ]).
   controller('IndexCtrl', ['$scope',
     function($scope) {
       $scope.video = {
