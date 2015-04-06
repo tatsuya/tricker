@@ -15,16 +15,14 @@ block content
         ul.nav.navbar-nav
           li.active
             a(href="/") ホーム
-          li
-            a(href="/tricks") トリック一覧
           li.dropdown(ng-class="{open: dropdownOne}", ng-init="dropdownOne", ng-click="dropdownOne = !dropdownOne")
-            a.dropdown-toggle(href="#" dropdown-toggle) Dropdown
+            a.dropdown-toggle(href="#" dropdown-toggle) 動画一覧
               span.caret
             ul.dropdown-menu(role="menu")
               li
-                a(href="#") Action
+                a(href="/videos?trick=backside-triple-cork-1440") バックサイドトリプルコーク1440
               li
-                a(href="#") Another action
+                a(href="/videos?trick=shifty") シフティ
               li
                 a(href="#") Something else here
               li.divider

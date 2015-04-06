@@ -19,9 +19,9 @@ config(function($routeProvider, $locationProvider) {
       templateUrl: 'partials/index',
       controller: 'IndexCtrl'
     }).
-    when('/tricks', {
-      templateUrl: 'partials/tricks',
-      controller: 'TrickListCtrl'
+    when('/videos', {
+      templateUrl: 'partials/videos',
+      controller: 'VideoListCtrl'
     }).
     otherwise({
       redirectTo: '/'
