@@ -28,6 +28,14 @@ angular.module('trickerApp.controllers', []).
     function($scope, $routeParams, $http) {
       $scope.rows = [];
 
+      $http.get('/api/tricks/' + $routeParams.trick).
+        success(function(data) {
+          $scope.trickName = data.name;
+        }).
+        error(function(data, status) {
+          console.log('Unable to retrieve resources, status: ' + status);
+        });
+
       $http.get('/api/videos/' + $routeParams.trick).
         success(function(data) {
           var videos = data;

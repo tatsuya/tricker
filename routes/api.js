@@ -3,6 +3,8 @@
 var express = require('express');
 var router = express.Router();
 
+var tricks = require('../data/tricks');
+
 var videos = {
   'ollie': [
     {
@@ -56,6 +58,11 @@ var videos = {
     }
   ]
 };
+
+router.get('/tricks/:trick', function(req, res) {
+  var trick = req.params.trick;
+  res.send(tricks[trick]);
+});
 
 router.get('/videos/:trick', function(req, res) {
   var trick = req.params.trick;
