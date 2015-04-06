@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'List of tricks' });
+  res.render('index', { title: 'Tricker' });
 });
 
 module.exports = router;
