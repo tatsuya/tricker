@@ -4,6 +4,28 @@ var express = require('express');
 var router = express.Router();
 
 var videos = {
+  'ollie': [
+    {
+      'player': 'youtube',
+      'video_id': 'qmJBCQs7iDg',
+      'title': '【スノボグラトリ動画基本編】1-1オーリーを完璧にしよう!!｜スノーボードグランドトリックOllie'
+    },
+    {
+      'player': 'youtube',
+      'video_id': 'WmoZhcD_a7Q',
+      'title': 'スノーボード　オーリー動画　ジェレミーショーンズ'
+    },
+    {
+      'player': 'youtube',
+      'video_id': '4o_PHq8xArM',
+      'title': '壁田竜一ハイオーリー！'
+    },
+    {
+      'player': 'youtube',
+      'video_id': 'uNNZ-YuKnG0',
+      'title': '【スノーボードレッスン】オーリー'
+    }
+  ],
   'shifty': [
     {
       'player': 'youtube',
