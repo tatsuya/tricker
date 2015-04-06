@@ -9,6 +9,11 @@
 angular.module('trickerApp.controllers', []).
   controller('IndexCtrl', ['$scope',
     function($scope) {
+      $scope.video = {
+        player: 'youtube',
+        video_id: 'SXFQCgw-V_k',
+        title: 'キッカーを使ってFsシフティ IKENOCITY PARK ACADEMY　スノーボードHow to'
+      };
       $scope.world = 'world';
     }
   ]).
