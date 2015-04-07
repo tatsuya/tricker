@@ -14,8 +14,8 @@ angular.module('trickerApp.controllers', []).
       };
     }
   ]).
-  controller('IndexCtrl', ['$scope',
-    function($scope) {
+  controller('IndexCtrl', ['$scope', '$http',
+    function($scope, $http) {
       $scope.video = {
         player: 'youtube',
         video_id: 'SXFQCgw-V_k',
@@ -23,47 +23,13 @@ angular.module('trickerApp.controllers', []).
       };
       $scope.world = 'world';
 
-      var trickList = [
-        {
-          type: 'category',
-          name: 'ストレートジャンプ',
-          tricks: [
-            {
-              type: 'item',
-              name: 'ollie',
-              name_ja: 'オーリー'
-            },
-            {
-              type: 'item',
-              name: 'nollie',
-              name_ja: 'ノーリー'
-            },
-            {
-              type: 'item',
-              name: 'shifty',
-              name_ja: 'シフティ'
-            }
-          ]
-        },
-        {
-          type: 'category',
-          name: 'キッカー',
-          tricks: [
-            {
-              type: 'item',
-              name: 'frontside-triple-cork-1440',
-              name_ja: 'フロントサイドトリプルコーク1440'
-            },
-            {
-              type: 'item',
-              name: 'backside-triple-cork-1440',
-              name_ja: 'バックサイドトリプルコーク1440'
-            }
-          ]
-        }
-      ];
-
-      $scope.rows = trickList;
+      $http.get('/api/tricks').
+        success(function(data) {
+          $scope.tricks = data;
+        }).
+        error(function(data, status) {
+          console.log('Unable to retrieve resources, status: ' + status);
+        });
     }
   ]).
   controller('VideoListCtrl', ['$scope', '$routeParams', '$http',

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "ground",
+    "name_ja": "グラトリ",
+    "children": [
+      {
+        "name": "straight air",
+        "name_ja": "ストレートジャンプ",
+        "children": [
+          {
+            "name": "ollie",
+            "name_ja": "オーリー",
+            "description": "オーリーはスノーボードのテール（後ろ側）のバネを使って空中に跳ぶトリックです。オーリーはグラトリやキッカーなどすべてのトリックの基本となる技です。"
+          },
+          {
+            "name": "nollie",
+            "name_ja": "ノーリー"
+          },
+          {
+            "name": "shifty",
+            "name_ja": "シフティ"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "kicker",
+    "name_ja": "キッカー",
+    "children": [
+      {
+        "name": "frontside-triple-cork-1440",
+        "name_ja": "フロントサイドトリプルコーク1440"
+      },
+      {
+        "name": "backside-triple-cork-1440",
+        "name_ja": "バックサイドトリプルコーク1440"
+      }
+    ]
+  }
+]

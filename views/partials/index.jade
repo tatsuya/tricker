@@ -12,10 +12,28 @@
           a.btn.btn-primary.btn-lg(href="#" role="button") Learn more &raquo;
 
 .container
+  .row(ng-repeat="c1 in tricks")
+    .col-md-12(ng-if="!c1.children")
+      h5 {{c1.name_ja}}
+      p {{c1.description}}
+    .col-md-12(ng-if="c1.children")
+      h2.page-header {{c1.name_ja}}
+      div(ng-repeat="c2 in c1.children")
+        .col-md-12(ng-if="!c2.children")
+          h5 {{c2.name_ja}}
+          p {{c2.description}}
+        .col-md-12(ng-if="c2.children")
+          h3.page-header {{c2.name_ja}}
+          div(ng-repeat="c3 in c2.children")
+            .col-md-12(ng-if="c3.children")
+              h4.page-header {{c3.name_ja}}
+            .col-md-12(ng-if="!c3.children")
+              h5 {{c3.name_ja}}
+              p {{c3.description}}
+
   .row
     .col-md-4
       h2 オーリー
-      p オーリーはスノーボードのテール（後ろ側）のバネを使って空中に跳ぶトリックです。オーリーはグラトリやキッカーなどすべてのトリックの基本となる技です。
       p
         a.btn.btn-default(href="/videos?trick=ollie" role="button") オーリーの動画を見る &raquo;
     .col-md-4

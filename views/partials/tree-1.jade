@@ -1,0 +1,8 @@
+h3(ng-if="child.children") {{child.name}}
+p(ng-if="!child.children") {{child.name}}
+div(ng-repeat="grandchild in child.children")
+  h4(ng-if="grandchild.children") {{grandchild.name}}
+  p(ng-if="!grandchild.children") {{grandchild.name}}
+  div(ng-repeat="greatgrandchild in grandchild.children")
+    h5(ng-if="greatgrandchild.children") {{greatgrandchild.name}}
+    p(ng-if="!greatgrandchild.children") {{greatgrandchild.name}}
