@@ -34,21 +34,38 @@ angular.module('trickerApp.controllers', []).
   ]).
   controller('VideoListCtrl', ['$scope', '$routeParams', '$http',
     function($scope, $routeParams, $http) {
-      $scope.rows = [];
+      $scope.trickName = '全て';
 
-      $http.get('/api/tricks/' + $routeParams.trick).
+      var trick = $routeParams.trick;
+
+      var tricksURL = '/api/tricks/'
+      if (trick) {
+        tricksURL += trick;
+      }
+
+      $http.get(tricksURL).
         success(function(data) {
-          $scope.trickName = data.name;
+          if (data.name) {
+            $scope.trickName = data.name;
+          }
         }).
         error(function(data, status) {
           console.log('Unable to retrieve resources, status: ' + status);
         });
 
-      $http.get('/api/videos/' + $routeParams.trick).
+      $scope.rows = [];
+
+      var videosURL = '/api/videos/';
+      if (trick) {
+        videosURL += trick;
+      }
+
+      $http.get(videosURL).
         success(function(data) {
           var videos = data;
+          var columns = 3;
           while (videos.length) {
-            $scope.rows.push(videos.splice(0, 3));
+            $scope.rows.push(videos.splice(0, columns));
           }
         }).
         error(function(data, status) {

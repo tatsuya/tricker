@@ -13,10 +13,8 @@ block content
 
       #navbar.navbar-collapse(ng-class="{collapse: isCollapsed}")
         ul.nav.navbar-nav
-          li.active
-            a(href="/" ng-click="collapse()") ホーム
           li.dropdown(ng-class="{open: dropdownOne}" ng-init="dropdownOne" ng-click="dropdownOne = !dropdownOne")
-            a.dropdown-toggle(href="#" dropdown-toggle) 動画一覧
+            a.dropdown-toggle(href="#" dropdown-toggle) トリック一覧
               span.caret
             ul.dropdown-menu(role="menu")
               li
@@ -25,12 +23,6 @@ block content
                 a(href="/videos?trick=shifty" ng-click="collapse()") シフティ
               li
                 a(href="/videos?trick=backside-triple-cork-1440" ng-click="collapse()") バックサイドトリプルコーク1440
-              li.divider
-              li.dropdown-header Nav header
-              li
-                a(href="#" ng-click="collapse()") Separated link
-              li
-                a(href="#" ng-click="collapse()") One more separated link
 
   div(ng-view)
 

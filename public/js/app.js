@@ -15,16 +15,19 @@ angular.module('trickerApp', [
 ]).
 config(function($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/', {
-      templateUrl: 'partials/index',
-      controller: 'IndexCtrl'
-    }).
+    // when('/', {
+    //   templateUrl: 'partials/index',
+    //   controller: 'IndexCtrl'
+    // }).
     when('/videos', {
       templateUrl: 'partials/videos',
       controller: 'VideoListCtrl'
     }).
+    // otherwise({
+    //   redirectTo: '/'
+    // });
     otherwise({
-      redirectTo: '/'
+      redirectTo: '/videos'
     });
     $locationProvider.html5Mode(true);
 });
