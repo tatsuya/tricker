@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var page = require('../lib/middleware/page');
+var page = require('../lib/middlewares/page');
 
 var tree = require('../data/tree');
 var tricks = require('../data/tricks');
@@ -18,8 +18,15 @@ router.get('/tricks/:trick', function(req, res) {
   res.send(tricks[trick]);
 });
 
-router.get('/videos', function(req, res) {
-  res.send(video.list());
+router.get('/videos', page(video.count, 3), function(req, res) {
+  var page = req.page;
+  var videos = video.getRange(page.from, page.to);
+  var host = req.app.get('host');
+  var next = page.number + 2;
+  res.links({
+    next: 'http://' + host + '/videos?page=' + next
+  });
+  res.send(videos);
 });
 
 router.get('/videos/:trick', function(req, res) {

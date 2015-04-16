@@ -61,8 +61,10 @@ angular.module('trickerApp.controllers', []).
       }
 
       $http.get(videosURL).
-        success(function(data) {
+        success(function(data, status, headers) {
           var videos = data;
+          console.log(status);
+          console.log(headers);
           var columns = 3;
           while (videos.length) {
             $scope.rows.push(videos.splice(0, columns));

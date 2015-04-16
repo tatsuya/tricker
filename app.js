@@ -17,6 +17,15 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// environment specific variables
+if (app.get('env') === 'development') {
+    app.set('host', 'localhost:3000');
+} else if (app.get('env') === 'heroku') {
+    app.set('host', 'tricker.herokuapp.com')
+} else {
+    throw new Error('NODE_ENV must be either "development" or "heroku"');
+}
+
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
