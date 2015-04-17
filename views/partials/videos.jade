@@ -14,3 +14,12 @@
           vimeo-video(ng-if="video.player == 'vimeo'" video-id="video.video_id" player-id="video.video_id")
         .caption
           h5 {{video.title}}
+
+  .row
+    .col-md-12
+      nav
+        ul.pager
+          li.previous
+            a(href="#") Previous
+          li.next
+            a(href="#") Next

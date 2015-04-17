@@ -21,9 +21,12 @@ router.get('/tricks/:trick', function(req, res) {
 router.get('/videos', page(video.count, 3), function(req, res) {
   var page = req.page;
   var videos = video.getRange(page.from, page.to);
+
   var host = req.app.get('host');
+  var prev = page.number;
   var next = page.number + 2;
   res.links({
+    prev: 'http://' + host + '/videos?page=' + prev,
     next: 'http://' + host + '/videos?page=' + next
   });
   res.send(videos);
