@@ -11,7 +11,8 @@ angular.module('trickerApp', [
   'vimeoEmbed',
 
   // My modules
-  'trickerApp.controllers'
+  'trickerApp.controllers',
+  'trickerApp.services'
 ]).
 config(function($routeProvider, $locationProvider) {
   $routeProvider.

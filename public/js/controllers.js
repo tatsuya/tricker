@@ -14,8 +14,8 @@ angular.module('trickerApp.controllers', []).
       };
     }
   ]).
-  controller('IndexCtrl', ['$scope', '$http',
-    function($scope, $http) {
+  controller('IndexCtrl', ['$scope', 'Trick',
+    function($scope, Trick) {
       $scope.video = {
         player: 'youtube',
         video_id: 'SXFQCgw-V_k',
@@ -23,56 +23,33 @@ angular.module('trickerApp.controllers', []).
       };
       $scope.world = 'world';
 
-      $http.get('/api/tricks').
-        success(function(data) {
-          $scope.tricks = data;
-        }).
-        error(function(data, status) {
-          console.log('Unable to retrieve resources, status: ' + status);
-        });
+      Trick.query(function(data) {
+        $scope.tricks = data;
+      });
     }
   ]).
-  controller('VideoListCtrl', ['$scope', '$routeParams', '$http',
-    function($scope, $routeParams, $http) {
+  controller('VideoListCtrl', ['$scope', '$routeParams', 'Video', 'Trick',
+    function($scope, $routeParams, Video, Trick) {
       $scope.trickName = '全て';
-
-      var trick = $routeParams.trick;
-
-      var tricksURL = '/api/tricks/'
-      if (trick) {
-        tricksURL += trick;
-      }
-
-      $http.get(tricksURL).
-        success(function(data) {
-          if (data.name) {
-            $scope.trickName = data.name;
-          }
-        }).
-        error(function(data, status) {
-          console.log('Unable to retrieve resources, status: ' + status);
-        });
-
       $scope.rows = [];
 
-      var videosURL = '/api/videos/';
-      if (trick) {
-        videosURL += trick;
-      }
+      Trick.get({ trickId: $routeParams.trick }, function(data) {
+        if (data.name) {
+          $scope.trickName = data.name;
+        }
+      });
 
-      $http.get(videosURL).
-        success(function(data, status, headers) {
-          var videos = data;
-          $scope.links = li.parse(headers('Link'));
+      Video.query({ videoId: $routeParams.trick }, function(data, headers) {
+        var videos = data;
+        var links = headers('Link');
 
-          var columns = 3;
-          while (videos.length) {
-            $scope.rows.push(videos.splice(0, columns));
-          }
-        }).
-        error(function(data, status) {
-          console.log('Unable to retrieve resources, status: ' + status);
-        });
+        console.log(links);
+
+        var columns = 3;
+        while (videos.length) {
+          $scope.rows.push(videos.splice(0, columns));
+        }
+      });
 
       $scope.prev = function() {
         console.log($scope.links.prev);

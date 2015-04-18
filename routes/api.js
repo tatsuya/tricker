@@ -18,16 +18,16 @@ router.get('/tricks/:trick', function(req, res) {
   res.send(tricks[trick]);
 });
 
-router.get('/videos', page(video.count, 3), function(req, res) {
+router.get('/videos', page(video.count, 5), function(req, res) {
   var page = req.page;
   var videos = video.getRange(page.from, page.to);
 
   var links = {};
   if (page.number) {
-    links.prev = page.number;
+    links.prev = '/videos?page=' + page.number;
   }
   if (page.number < page.count - 1) {
-    links.next = page.number + 2;
+    links.next = '/videos?page=' + (page.number + 2);
   }
   res.links(links);
 
