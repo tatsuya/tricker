@@ -63,8 +63,7 @@ angular.module('trickerApp.controllers', []).
       $http.get(videosURL).
         success(function(data, status, headers) {
           var videos = data;
-          var links = li.parse(headers('Link'));
-          console.log(links);
+          $scope.links = li.parse(headers('Link'));
 
           var columns = 3;
           while (videos.length) {
@@ -74,5 +73,13 @@ angular.module('trickerApp.controllers', []).
         error(function(data, status) {
           console.log('Unable to retrieve resources, status: ' + status);
         });
+
+      $scope.prev = function() {
+        console.log($scope.links.prev);
+      };
+
+      $scope.next = function() {
+        console.log($scope.links.next);
+      };
     }
   ]);
