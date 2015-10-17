@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 var page = require('../lib/middlewares/page');
+var PERPAGE = 5;
 
 var tree = require('../data/tree');
 var tricks = require('../data/tricks');
@@ -18,25 +19,36 @@ router.get('/tricks/:trick', function(req, res) {
   res.send(tricks[trick]);
 });
 
-router.get('/videos', page(video.count, 5), function(req, res) {
+router.get('/videos', page(video.count, PERPAGE), function(req, res) {
   var page = req.page;
+
+  console.log(page);
+
   var videos = video.getRange(page.from, page.to);
 
+  console.log(videos);
+
   var links = {};
-  if (page.number) {
-    links.prev = '/videos?page=' + page.number;
-  }
-  if (page.number < page.count - 1) {
-    links.next = '/videos?page=' + (page.number + 2);
+  if (typeof page.number === 'number') {
+    if (page.number) {
+      links.prev = '/videos?page=' + page.number;
+    }
+    if (page.number < page.count - 1) {
+      links.next = '/videos?page=' + (page.number + 2);
+    }
   }
   res.links(links);
-
   res.send(videos);
 });
 
-router.get('/videos/:trick', function(req, res) {
+router.get('/videos/:trick', page(video.count, PERPAGE), function(req, res) {
   var trick = req.params.trick;
-  res.send(video.filterByTag(trick));
+  var videos = video.filterByTag(trick);
+
+  var links = {};
+  res.links(links);
+
+  res.send(videos);
 });
 
 module.exports = router;

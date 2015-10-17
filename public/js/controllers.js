@@ -16,13 +16,6 @@ angular.module('trickerApp.controllers', []).
   ]).
   controller('IndexCtrl', ['$scope', 'Trick',
     function($scope, Trick) {
-      $scope.video = {
-        player: 'youtube',
-        video_id: 'SXFQCgw-V_k',
-        title: 'キッカーを使ってFsシフティ IKENOCITY PARK ACADEMY　スノーボードHow to'
-      };
-      $scope.world = 'world';
-
       Trick.query(function(data) {
         $scope.tricks = data;
       });
@@ -33,30 +26,35 @@ angular.module('trickerApp.controllers', []).
       $scope.trickName = '全て';
       $scope.rows = [];
 
-      Trick.get({ trickId: $routeParams.trick }, function(data) {
-        if (data.name) {
-          $scope.trickName = data.name;
-        }
-      });
+      $scope.prev;
+      $scope.next;
 
-      Video.query({ videoId: $routeParams.trick }, function(data, headers) {
-        var videos = data;
-        var links = headers('Link');
+      function get(page) {
+        $scope.rows = [];
+        Video.query({
+          videoId: $routeParams.trick,
+          page: page
+        }, function(data, headers) {
+          var videos = data;
 
-        console.log(links);
+          var links = li.parse(headers('Link'));
 
-        var columns = 3;
-        while (videos.length) {
-          $scope.rows.push(videos.splice(0, columns));
-        }
-      });
+          $scope.prev = links.prev;
+          $scope.next = links.next;
 
-      $scope.prev = function() {
-        console.log($scope.links.prev);
-      };
+          var columns = 3;
+          while (videos.length) {
+            $scope.rows.push(videos.splice(0, columns));
+          }
+        });
+      }
 
-      $scope.next = function() {
-        console.log($scope.links.next);
+      get(0);
+
+      $scope.retrieveVideos = function(val) {
+        var page = val.split('/videos?page=')[1];
+        page = parseInt(page);
+        get(page);
       };
     }
   ]);

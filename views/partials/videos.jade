@@ -20,6 +20,6 @@
       nav
         ul.pager
           li.previous
-            a(href="#" ng-click="prev()") Previous
+            a(ng-show="prev" href="" ng-click="retrieveVideos(prev)") Previous
           li.next
-            a(href="#" ng-click="next()") Next
+            a(ng-show="next" href="" ng-click="retrieveVideos(next)") Next
