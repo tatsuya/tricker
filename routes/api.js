@@ -22,19 +22,16 @@ router.get('/tricks/:trick', function(req, res) {
 router.get('/videos', page(video.count, PERPAGE), function(req, res) {
   var page = req.page;
 
-  console.log(page);
-
   var videos = video.getRange(page.from, page.to);
 
-  console.log(videos);
-
   var links = {};
+  var path = '/videos?';
   if (typeof page.number === 'number') {
     if (page.number) {
-      links.prev = '/videos?page=' + page.number;
+      links.prev = path + 'page=' + page.number;
     }
     if (page.number < page.count - 1) {
-      links.next = '/videos?page=' + (page.number + 2);
+      links.next = path + 'page=' + (page.number + 2);
     }
   }
   res.links(links);
@@ -42,12 +39,26 @@ router.get('/videos', page(video.count, PERPAGE), function(req, res) {
 });
 
 router.get('/videos/:trick', page(video.count, PERPAGE), function(req, res) {
+  var page = req.page;
   var trick = req.params.trick;
-  var videos = video.filterByTag(trick);
+
+  var videos = video.getRange(page.from, page.to, trick);
 
   var links = {};
-  res.links(links);
+  var path = '/videos?';
 
+  console.log(page);
+
+  if (typeof page.number === 'number') {
+    if (page.number) {
+      links.prev = path + 'page=' + page.number;
+    }
+    if (page.number < page.count - 1) {
+      links.next = path + 'page=' + (page.number + 2);
+    }
+  }
+
+  res.links(links);
   res.send(videos);
 });
 
