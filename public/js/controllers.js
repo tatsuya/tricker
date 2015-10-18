@@ -46,6 +46,13 @@ angular.module('trickerApp.controllers', []).
           while (videos.length) {
             $scope.rows.push(videos.splice(0, columns));
           }
+
+          Trick.get({
+            trickId: $routeParams.trick
+          }, function(data, headers) {
+            var trick = data;
+            $scope.trickName = trick.name;
+          });
         });
       }
 

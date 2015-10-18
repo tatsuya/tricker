@@ -15,8 +15,13 @@ router.get('/tricks', function(req, res) {
 });
 
 router.get('/tricks/:trick', function(req, res) {
-  var trick = req.params.trick;
-  res.send(tricks[trick]);
+  var key = req.params.trick;
+  var trick = tricks[key];
+  if (!trick) {
+    res.status(404).send('Trick not found.');
+  } else {
+    res.send(trick);
+  }
 });
 
 router.get('/videos', page(video.count, PERPAGE), function(req, res) {

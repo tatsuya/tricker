@@ -5,7 +5,22 @@
   "shifty": {
     "name": "シフティ"
   },
+  "frontside-360": {
+    "name": "フロントサイド360"
+  },
+  "backside-360": {
+    "name": "バックサイド360"
+  },
+  "backside-rodeo-540": {
+    "name": "バックサイドロデオ540"
+  },
+  "front-flip": {
+    "name": "フロントフリップ"
+  },
   "backside-triple-cork-1440": {
     "name": "バックサイドトリプルコーク1440"
+  },
+  "backside-triple-cork-1620": {
+    "name": "バックサイドトリプルコーク1620"
   }
 }
